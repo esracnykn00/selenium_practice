@@ -25,12 +25,12 @@ public class C02_WindowHandle extends TestBase {
         // 3- yeni bir pencere acip https://www.bestbuy.com sayfasina gidelim
         driver.switchTo().newWindow(WindowType.WINDOW);
         driver.get("https://www.bestbuy.com");
-
         String sayfa2Handle = driver.getWindowHandle();
 
         // 4- title'in 'Best Buy' icerdigini test edelim
         String bestBuyTitle = driver.getTitle();
         Assert.assertTrue(bestBuyTitle.contains("Best Buy"));
+        bekle(2);
 
         // 5- ilk sayfaya(amazon) donup sayfada java aratalım
         driver.switchTo().window(sayfa1Handle);
@@ -45,9 +45,9 @@ public class C02_WindowHandle extends TestBase {
         // 7- ikinci sayfaya(bestbuy) donelim
         driver.switchTo().window(sayfa2Handle);
 
-
         // 8- logonun gorundugunu test edelim
-
+        WebElement logo = driver.findElement(By.xpath("//*[@class='logo']"));
+        Assert.assertTrue(logo.isDisplayed());
 
     }
 }
